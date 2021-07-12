@@ -121,7 +121,7 @@ wget https://www-user.tu-chemnitz.de/~potts/nfft/download/nfft-3.4.1.tar.gz
 tar -zxf nfft-3.4.1.tar.gz
 cd nfft-3.4.1
 
-./configure --enable-all --enable-openmp --prefix=$HOME/nfft-3.4.1/install --with-fftw3=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/ LDFLAGS="-L/$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib"
+./configure --enable-all --enable-openmp --prefix=$HOME/nfft-3.4.1/install --with-fftw3=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/ LDFLAGS="-L$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib"
 
 make
 make install
