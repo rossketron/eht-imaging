@@ -115,13 +115,16 @@ You will need to add the lib directory of fftw3 to `LD_LIBRARY_PATH` to allow nf
 export LD_LIBRARY_PATH=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib:$LD_LIBRARY_PATH
 ```
 There is a link for download and build instructions for nfft [here].(https://www-user.tu-chemnitz.de/~potts/nfft/installation.php). Download the file, extract it, and build.
-All necessary instructions are given below.
+All necessary instructions are given below. This assumes installation into a `~/software/installs` directory used for manually installed software. These files can be placed elsewhere, however, the paths to `nfft-3.4.1` in preceding commands should be adjusted accordingly if placed in a location other than `~/software/installs`.
 ```
+cd $HOME/software/installs
 wget https://www-user.tu-chemnitz.de/~potts/nfft/download/nfft-3.4.1.tar.gz
 tar -zxf nfft-3.4.1.tar.gz
+rm nfft-3.4.1.tar.gz
 cd nfft-3.4.1
 
-./configure --enable-all --enable-openmp --prefix=$HOME/nfft-3.4.1/install --with-fftw3=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/ LDFLAGS="-L$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib"
+## Replace `/home/cketron2/` with the path to your home directory 
+./configure --enable-all --enable-openmp --prefix=/home/cketron2/software/install nfft-3.4.1/install --with-fftw3=/home/cketron2/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/ LDFLAGS="-L/home/cketron2/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib"
 
 make
 make install
@@ -130,22 +133,24 @@ make install
 ### __Manually install pynfft v.1.3.3__
 Download the pynfft tar-file and extract it
 ```
+cd $HOME/software/installs
 wget https://files.pythonhosted.org/packages/4c/3d/049200e44351861ca754f15d772ea14b0b447ee41f7b8d29f6357a674ca6/pyNFFT2-1.3.3.tar.gz 
 tar -xvf pyNFFT2-1.3.3.tar.gz
+rm pyNFFT2-1.3.3.tar.gz
 cd pyNFFT2-1.3.3/
 ```
 
 You will have to edit the `setup.py` file by removing some conflicting compilation flags in `extra_compile_args` and adding paths to `library_dirs` and `include_dirs`.
 
-Lines 30 - 39 of the `pyNFFT2-1.3.3/setup.py` file should look like below after changes, no other changes are made to this file:
+Lines 30 - 39 of the `pyNFFT2-1.3.3/setup.py` file should look like below after changes (replace `/home/cketron2/` with the path to your home directory, no other changes are made to this file:
 ```
 30 # Define utility functions to build the extensions
 31 def get_common_extension_args():
 32    import numpy
 33    common_extension_args = dict(
 34        libraries=['nfft3_threads', 'nfft3', 'fftw3_threads', 'fftw3', 'm'],
-35        library_dirs=["$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib", "$HOME/man-libs/eht-imaging-pipeline/nfft-3.4.1/install/lib"],
-36        include_dirs=["$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/include", "$HOME/man-libs/eht-imaging-pipeline/nfft-3.4.1/include", numpy.get_include()],
+35        library_dirs=["/home/cketron2/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib", "/home/cketron2/software/installs/nfft-3.4.1/install/lib"],
+36        include_dirs=["/home/cketron2/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/include", "/home/cketron2/software/installs/nfft-3.4.1/include", numpy.get_include()],
 37        extra_compile_args='-O3 -fstrict-aliasing -ffast-math'.split(),
 38        )
 39    return common_extension_args
@@ -153,7 +158,7 @@ Lines 30 - 39 of the `pyNFFT2-1.3.3/setup.py` file should look like below after 
 
 Run the setup.py file, then build and install
 ```
-python setup.py build_ext -I $HOME/nfft-3.4.1/include/ -L $HOME/nfft-3.4.1/install/lib/ -R $HOME/nfft-3.4.1/install/lib/
+python setup.py build_ext -I $HOME/software/installs/nfft-3.4.1/include/ -L $HOME/software/installs/nfft-3.4.1/install/lib/ -R $HOME/software/installs/nfft-3.4.1/install/lib/
 
 python setup.py build
 python setup.py install
