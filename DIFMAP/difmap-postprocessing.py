@@ -17,9 +17,9 @@ parser.add_argument('-b', '--beam'   , default=False, help="display beam size in
 parser.add_argument('-a', '--all'    , default=False, help="perform all post-processing steps", action='store_true')
 args = parser.parse_args()
 
-# Default location if not specified
+# Default location if not specified -- should be the location where DIFMAP is outputting files, i.e., the directory it was called in
 if(args.outfile == ""):
-    args.outfile = 'difmap-pdfs/'+args.infile[:-4]+'pdf'
+    args.outfile = '../data/difmap-pdfs/'+args.infile[:-4]+'pdf'
 
 print("Exporting PDF to", args.outfile)
 
