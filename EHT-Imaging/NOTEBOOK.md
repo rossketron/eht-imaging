@@ -13,7 +13,7 @@ Follow the installation procedures for installing Anaconda after running bash sc
 
 #### __Create a new conda environment from the `.yml` file in this repository__
 ```
-conda env create --file eht-imaging-environment.yml
+conda env create --file eht-imaging_environment.yml
 ```
 This installs all necessary dependencies, including the needed Jupyter products to run the notebook.
 #### __To run the notebook in Jupyter Lab__

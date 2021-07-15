@@ -26,7 +26,7 @@ for d in 095 096 100 101; do
     python eht-imaging_pipeline.py \
         -i  ../data/uvfits/SR1_M87_2017_${d}_lo_hops_netcal_StokesI.uvfits \
         -i2 ../data/uvfits/SR1_M87_2017_${d}_hi_hops_netcal_StokesI.uvfits \
-        -o        ./output/SR1_M87_2017_${d}.fits                         #\
-       #--savepdf                                                          \
+        -o        ./pipeline-output/SR1_M87_2017_${d}.fits
+       #--savepdf
        #--imsum
 done
