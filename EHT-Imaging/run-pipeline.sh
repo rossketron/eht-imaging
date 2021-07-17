@@ -22,6 +22,16 @@
 # To save .pdf of final image, uncomment --savepdf arg.
 # To save .pdf of image summary statistics, uncomment --
 #
+
+# Check if Data is available, if not, then unpack the provided tarball
+if [[ ! -f ../Data ]]; then
+    echo "========= Data not yet unpacked, executing ../unpack_data.sh ================="
+    cd ../
+    bash unpack_data.sh
+    cd EHT-Imaging/
+    echo "======================= Finished unpacking Data =============================="
+fi
+
 for d in 095 096 100 101; do
     python eht-imaging_pipeline.py \
         -i  ../data/uvfits/SR1_M87_2017_${d}_lo_hops_netcal_StokesI.uvfits \
