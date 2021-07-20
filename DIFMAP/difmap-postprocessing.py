@@ -3,6 +3,7 @@ matplotlib.use('Agg')
 import os
 import argparse
 import ehtim as eh
+import numpy as np
 
 #-------------------------------------------------------------------------------
 # Load command-line arguments
@@ -32,5 +33,9 @@ if(args.center or args.all): im_obj = im_obj.shift([8, 0]) # Not an exact value,
 if(args.regrid or args.all): im_obj = im_obj.regrid_image(128*eh.RADPERUAS, 64)
 params = [9.696e-11, 9.696e-11, 0] # This is for DIFMAP (20 uas) -- do NOT blur, as it is already applied. This is used only for display()’s beamparams
 
-if(args.beam or args.all): im_obj.display(cbar_unit=['Tb'], label_type=scale, beamparams=params, export_pdf=args.outfile)
-else: im_obj.display(cbar_unit=['Tb'], label_type=scale, export_pdf=args.outfile)
+# Create color map of afmhot_10us, vals copied from ehtplot/color/ctabs/afmhot_10us.ctab file
+colors = np.loadtxt("afmhot_10us.cmap", delimiter=" ", unpack=False)
+newcmp = matplotlib.colors.ListedColormap(colors)
+
+if(args.beam or args.all): im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, beamparams=params, export_pdf=args.outfile)
+else: im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, export_pdf=args.outfile
