@@ -16,6 +16,7 @@ parser.add_argument('-c', '--center' , default=False, help="center image object"
 parser.add_argument('-s', '--scale'  , default=False, help="display scale in output"          , action='store_true')
 parser.add_argument('-b', '--beam'   , default=False, help="display beam size in output"      , action='store_true')
 parser.add_argument('-a', '--all'    , default=False, help="perform all post-processing steps", action='store_true')
+parser.add_argument('-n', '--notitle', default=False, help="remove title/surrounding elements", action='store_true')
 args = parser.parse_args()
 
 # Default location if not specified -- should be the location where DIFMAP is outputting files, i.e., the directory it was called in
@@ -37,5 +38,8 @@ params = [9.696e-11, 9.696e-11, 0] # This is for DIFMAP (20 uas) -- do NOT blur,
 colors = np.loadtxt("afmhot_10us.cmap", delimiter=" ", unpack=False)
 newcmp = matplotlib.colors.ListedColormap(colors)
 
-if(args.beam or args.all): im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, beamparams=params, export_pdf=args.outfile)
-else: im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, export_pdf=args.outfile
+if(args.notitle):
+    if(args.beam or args.all): im_obj.display(has_title=False, has_cbar=False, cfun=newcmp, label_type=scale, beamparams=params, export_pdf=args.outfile)
+    else: im_obj.display(has_title=False, has_cbar=False, cfun=newcmp, label_type=scale, export_pdf=args.outfile)
+elif(args.beam or args.all): im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, beamparams=params, export_pdf=args.outfile)
+else: im_obj.display(cbar_unit=['Tb'], cfun=newcmp, label_type=scale, export_pdf=args.outfile)
