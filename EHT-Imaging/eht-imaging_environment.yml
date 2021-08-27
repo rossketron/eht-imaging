@@ -1,4 +1,4 @@
-name: eht-imaging-cenv
+name: eht-imaging
 channels:
   - conda-forge
   - defaults
@@ -113,10 +113,22 @@ dependencies:
   - zlib=1.2.11=h7b6447c_3
   - pip:
     - argparse==1.4.0
+    - astropy==4.3.1
+    - cycler==0.10.0
     - decorator==4.4.2
+    - ehtim==1.2.2
+    - ephem==4.0.0.2
+    - future==0.18.2
+    - h5py==3.4.0
     - imageio==2.9.0
+    - kiwisolver==1.3.1
+    - matplotlib==3.4.3
     - networkx==2.5.1
+    - pandas==1.3.2
+    - pillow==8.3.1
+    - pyerfa==2.0.0
     - pywavelets==1.1.1
     - scikit-image==0.18.2
+    - scipy==1.7.1
     - tifffile==2021.6.14
-prefix: /home/ross/anaconda3/envs/eht-imaging-cenv
+prefix: /home/ross/software/install/anaconda3/envs/eht-imaging
