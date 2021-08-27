@@ -19,8 +19,8 @@ cd Src_EHT/EHT-Imaging
 
 
 ## __There are two options for installation dependending on your machine. Option 1 is the recommended method for X86_64 architectures (Intel). Option 2 will be required to install on systems with POWER architectures (IBM).__
-1. __[This uses Conda and Pip to install dependencies via the provided `environment.yml` file.](#Option-1-(recommended))__
-2. __[This uses Spack to install most dependencies but requires manual installation of the nfft and pynfft dependencies.](#Option-2-(necessary-for-POWER-systems))__
+1. __[This uses Conda and Pip to install dependencies via the provided `environment.yml` file.](#option-1-recommended)__
+2. __[This uses Spack to install most dependencies but requires manual installation of the nfft and pynfft dependencies.](#option-2-neccessary-for-power-systems)__
 
 -------------------------------------
 </br>
@@ -109,7 +109,7 @@ You will need to add the lib directory of fftw3 to `LD_LIBRARY_PATH` to allow nf
 ```
 export LD_LIBRARY_PATH=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib:$LD_LIBRARY_PATH
 ```
-There is a link for download and build instructions for nfft [here].(https://www-user.tu-chemnitz.de/~potts/nfft/installation.php). Download the file, extract it, and build.
+There is a link for download and build instructions for nfft [here](https://www-user.tu-chemnitz.de/~potts/nfft/installation.php). Download the file, extract it, and build.
 All necessary instructions are given below. This assumes installation into a `~/software/installs` directory used for manually installed software. These files can be placed elsewhere, however, the paths to `nfft-3.4.1` in preceding commands should be adjusted accordingly if placed in a location other than `~/software/installs`.
 ```
 cd $HOME/software/installs
