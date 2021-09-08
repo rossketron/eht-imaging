@@ -27,8 +27,8 @@ python eht-imaging_postprocessing.py \
 
 python eht-imaging_postprocessing.py \
     -i  ./pipeline-output/SR1_M87_2017_101.fits \
-    -o  ./pipeline-output/SR1_M87_2017_101_afmhot_blur.pdf \
-    --blur --notitle
+    -o  ./pipeline-output/SR1_M87_2017_101_afmhot10us.pdf \
+    --notitle --afmhot10us
 
 python eht-imaging_postprocessing.py \
     -i  ./pipeline-output/SR1_M87_2017_101.fits \
