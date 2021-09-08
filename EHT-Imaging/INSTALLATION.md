@@ -4,7 +4,11 @@
 
 Make sure system dependencies are installed -- use system package manager (The commands below assume Ubuntu, but you should change to your package manager):
 ```
-sudo apt-get install -y wget tar git 
+sudo apt-get install -y wget tar git \
+                        texlive-xetex \
+                        texlive-fonts-recommended \
+                        texlive-latex-recommended \
+                        cm-super
 ```
 
 Clone and traverse to the EHT-Imaging directory:
