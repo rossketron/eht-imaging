@@ -2,29 +2,15 @@
 #
 # Copyright (C) 2019 The Event Horizon Telescope Collaboration
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-#
 # Traverse the data directory and run eht-imaging_pipeline on each day's
 # lo and hi band .uvfits files. 
 # 
 # To save .pdf of final image, uncomment --savepdf arg.
-# To save .pdf of image summary statistics, uncomment --
+# To save .pdf of image summary statistics, uncomment --imsum (This doesn't work currently)
 #
 
 # Check if Data is available, if not, then unpack the provided tarball
-if [[ ! -f ../Data ]]; then
+if [[ ! -d ../data ]]; then
     echo "========= Data not yet unpacked, executing ../unpack_data.sh ================="
     cd ../
     bash unpack_data.sh
@@ -37,6 +23,6 @@ for d in 095 096 100 101; do
         -i  ../data/uvfits/SR1_M87_2017_${d}_lo_hops_netcal_StokesI.uvfits \
         -i2 ../data/uvfits/SR1_M87_2017_${d}_hi_hops_netcal_StokesI.uvfits \
         -o        ./pipeline-output/SR1_M87_2017_${d}.fits
-       #--savepdf
+       --savepdf
        #--imsum
 done

@@ -1,70 +1,71 @@
 # EHT-Imaging Pipeline Installation and Dependency Installations
 
-## __Clone Repository and Set-up for Dependency Installation__
+### __Setup directories with pipeline code and data__
+```
+# Make sure wget and tar are installed -- use system package manager:
+sudo apt install -y wget
+sudo apt install -y tar
 
-Make sure system dependencies are installed -- use system package manager (The commands below assume Ubuntu, but you should change to your package manager):
-```
-sudo apt-get install -y wget tar git \
-                        texlive-xetex \
-                        texlive-fonts-recommended \
-                        texlive-latex-recommended \
-                        cm-super
-```
-
-Clone and traverse to the EHT-Imaging directory:
-```
+# Create a new directory for installing / running pipeline
 cd ~
-git clone git@github.com:TauferLab/Src_EHT.git
-cd Src_EHT/EHT-Imaging
+mkdir eht-imaging
+cd eht-imaging
+
+# Clone the pipelines repo for image reconstruction
+git clone https://github.com/eventhorizontelescope/2019-D01-02.git
+cd 2019-D01-02
+
+# Download compressed uvfits files from repo
+wget https://github.com/eventhorizontelescope/2019-D01-01/raw/master/EHTC_FirstM87Results_Apr2019_uvfits.tgz
+
+# Extract uvfits files to: ./2019/data/[single_file]
+mkdir -p data
+tar -xvzf EHTC_FirstM87Results_Apr2019_uvfits.tgz -C data --strip-components=1
 ```
-</br>
 
-------------------------------------------------------------
+### There are 2 options for installation. Option 1 is the recommended method for non-POWER systems. Option 2 will be required to install on systems with POWER architectures.
+- Option 1 will use conda and pip to install all dependencies
+- Option 2 will use spack to install most dependencies but will require the manual installation of the nfft and pynfft dependencies.
 
+## __Option 1 (recommended):__
 
-## __There are two options for installation dependending on your machine. Option 1 is the recommended method for X86_64 architectures (Intel). Option 2 will be required to install on systems with POWER architectures (IBM).__
-1. __[This uses Conda and Pip to install dependencies via the provided `environment.yml` file.](#option-1-recommended)__
-2. __[This uses Spack to install most dependencies but requires manual installation of the nfft and pynfft dependencies.](#option-2-neccessary-for-power-systems)__
-
--------------------------------------
-</br>
-
-# __Option 1 (recommended)__
-
-### __Install Anaconda3 Package Manager__ -- _if not already installed_
+### __Install Anaconda package manager and create a new environment__
 You will need to find the version for your system at the bottom of this [page](https://www.anaconda.com/products/individual).
-Copy the link and paste in place of the link in the wget command below. The link in the command below is for the Ubuntu/Linux download.
+Copy the link and paste in place of the link in the wget command below. This link is for the Ubuntu/Linux download.
 ```
 wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
 bash Anaconda-latest-Linux-x86_64.sh
 ```
-Follow the installation procedures for installing Anaconda after running the Anaconda installation script above.
+Follow the installation procedures for installing Anaconda after running bash script above.
 
-### __Create Conda Environment__
-Use the provided `EHT-Imaging_environment.yml` file to create the conda environment. This will install all of the needed pipeline dependencies automatically.
+Create a new conda environment using python v3.8.10
 ```
-conda env create --file eht-imaging_environment.yml
-conda activate eht-imaging
-```
-
-### __A few minor syntax changes are needed to address errors that are in the ehtim package which prevent the pipeline from running successfully.__
-The paths to each file in the below steps assume that Anaconda is installed in the default location (the `$HOME` directory). If a custom install location was used, the paths will need to be changed to reflect this.
-
-1. On `line 322` of `~/anaconda3/envs/eht-imaging/libs/python3.8/site-packages/ehtim/imager.py`, remove the `.decode()` portion of the `print(response.message.decode())` statement. the new statements on `line 322` should look as below.
-```
-print(response.message)
+conda create -n eht-imaging-condaenv python=3.8.10
+conda activate eht-imaging-condaenv
 ```
 
-2.  On `line 508` and `line 556` of `~/anaconda3/envs/eht-imaging/libs/python3.8/site-packages/ehtim/obsdata.py`, add `dtype=object` to the statements. The new statements on `line 508` and `line 556` should look as below.
+### __Begin installing dependencies in your environment__
 ```
-np.array(datalist, dtype=object)
+conda install pip
 ```
+Check to make sure that pip returns with the one inside your conda env. This should be at `$HOME/anaconda3/envs/eht-imaging-condaenv/bin/pip` if you followed the default install location for Anaconda.
+```
+which pip
+```
+If this returns a different pip than the one in your conda environment, you can still use pip to install, but you will have to include the path to the pip you want to use. For example, in the code block below, you would replace `pip` with `$HOME/anaconda3/envs/eht-imaging-condaenv/bin/pip` to utilize the conda environment with your pip dependency installations. There are other ways to resolve this, but I feel that this is the simplest and easiest method.
+```
+pip install matplotlib
+pip install argparse
+pip install numpy
+pip install networkx
+pip install requests
+pip install scikit-image
+pip install ehtim
+conda install -c conda-forge pynfft
+```
+__All of the dependencies are installed and you should be able to run the pipeline__
 
-### __All depencies are installed__ -- Go [here](#Running-The-Pipeline) for documentation on running the pipeline
----------------------------
-</br>
-
-# __Option 2 (neccessary for POWER systems):__
+## __Option 2 (neccessary for POWER systems):__
 
 ### __Install spack, gcc-9.3.0 compiler, and python v.3.8.8__
 Install and set up spack if not already installed.
@@ -113,7 +114,7 @@ You will need to add the lib directory of fftw3 to `LD_LIBRARY_PATH` to allow nf
 ```
 export LD_LIBRARY_PATH=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib:$LD_LIBRARY_PATH
 ```
-There is a link for download and build instructions for nfft [here](https://www-user.tu-chemnitz.de/~potts/nfft/installation.php). Download the file, extract it, and build.
+There is a link for download and build instructions for nfft [here].(https://www-user.tu-chemnitz.de/~potts/nfft/installation.php). Download the file, extract it, and build.
 All necessary instructions are given below. This assumes installation into a `~/software/installs` directory used for manually installed software. These files can be placed elsewhere, however, the paths to `nfft-3.4.1` in preceding commands should be adjusted accordingly if placed in a location other than `~/software/installs`.
 ```
 cd $HOME/software/installs
@@ -192,27 +193,16 @@ You will have to add fftw3 to your path for ehtim to find it at runtime. This co
 export LD_LIBRARY_PATH=$HOME/spack/opt/spack/linux-rhel7-power9le/gcc-9.3.0/fftw-3.3.9-42lwbg7vmqhoanklu7bcpvrroswze3eu/lib:$LD_LIBRARY_PATH
 ```
 
-A few minor syntax changes need to be made to address errors that are in the ehtim package which prevent it from running successfully. This assumes spack is installed in your $HOME directory. If the root spack folder is in a different directory, the paths to files below should be modified accordingly. The `[machine]` section of path will need to be modified to the machine that you are using. You can press `tab` while typing path to see a list of possible machines.
+A few minor syntax changes need to be made to address errors that are in the ehtim package which prevent it from running successfully.
 
-- On `line 322` of `~/spack/opt/spack/[machine]/gcc-9.3.0/python-3.8.8-4gxiwokjydtnlzoynruwjoeupyvhrpbc/lib/python3.8/site-packages/ehtim/imager.py`, remove the `.decode()` portion of the `print(response.message.decode())` statement. the new statements on `line 322` should look as below.
+- On line 322 of `<path-to-ehtim>/imager.py`, remove the `.decode()` portion of the `print(response.message.decode())` statement. the new statements on lines 322 should look as below.
 ```
 print(response.message)
 ```
 
-- On `line 508` and `line 556` of `~/spack/opt/spack/[machine]/gcc-9.3.0/python-3.8.8-4gxiwokjydtnlzoynruwjoeupyvhrpbc/lib/python3.8/site-packages/ehtim/obsdata.py`, add `dtype=object` to the statements. The new statements on `line 508` and `line 556` should look as below.
+- On lines 508 and 556 of `<path-to-ehtim>/obsdata.py`, add `dtype=object` to the statements. The new statements on lines 508 and 556 should look as below.
 ```
 np.array(datalist, dtype=object)
 ```
----------------------------
-</br>
 
-# Running the Pipeline
-#### __All of the dependencies are now installed and you should be able to run the pipeline__
-The pipeline can be executed with the following command. There is no need to worry about unpacking the data or where it is located because the `run-pipeline.sh` script will automatically ensure it is in the correct location.
-
-Before running the pipeline, you can edit the `run-pipeline.sh` script to specify if you want the pipeline to save the images as .pdf files. Instructions are in the comments of the file on how to do this. The output .pdf files will be saved in the `pipeline-output` directory.
-
-You can run the pipeline with the following command:
-```
-bash run-pipeline.sh
-```
+__All of the dependencies are installed and you should be able to run the pipeline__

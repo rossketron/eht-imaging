@@ -1,5 +1,23 @@
 # eht-imaging M87 Stokes I Imaging Pipeline for EHT observations in April 2017
 
+This represents the reproduction of the Event Horizon Telescope Collaboration's EHT-Imaging Pipeline, more information can be found [here](#Original).
+
+A list of files, directories, and explanations of each is given below:
+* [`eht-imaging_pipeline.py`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_pipeline.py) - EHT Collab's Python script to construct images from data
+* [`eht-imaging_postprocessing.py`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_postprocessing.py) - Our Python script to produce better image reproductions closer to those released in [M87 Paper IV](https://doi.org/10.3847/2041-8213/ab0e85)
+* [`pipeline-output`](https://github.com/TauferLab/Src_EHT/tree/main/EHT-Imaging/pipeline-output) - Directory to store pipeline .fits output and post-processing image outputs
+* [`eht-imaging_pipeline.ipynb`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_pipeline.ipynb) - Our Jupyter notebook that steps through the original pipeline script to interactively produce images
+* [`notebook-output`](https://github.com/TauferLab/Src_EHT/tree/main/EHT-Imaging/notebook-output) - Directory to store notebook .fits output and images
+* [`NOTEBOOK.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/NOTEBOOK.md) - Instructions to set-up and run the provided Jupyter notebook
+* [`INSTALLATION.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/INSTALLATION.md) - Instructions to set-up environment with dependencies and run the pipeline
+* [`INSTALLATION_old.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/INSTALLATION_old.md) - Instructions to set-up environment (this file does not use the provided environment file)
+* [`eht-imaging_environment.yml`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_environment.yml) - File to create conda environment
+* [`run-pipeline.sh`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/run-pipeline.sh) - bash script with parameters to execute the pipeline across all Observation Days' data
+* [`run-postprocessing.sh`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/run-pipeline.sh) - bash script with parameters to execute desired post-processing effects/steps
+</br>
+</br>
+
+# Original
 **Authors:** The Event Horizon Telescope Collaboration et al.
 
 **Date:** April 10, 2019
@@ -33,3 +51,5 @@ For additional details, please read the help document associated in the imaging 
 - [Chael, A., Johnson, M., Bouman, K. et al. 2018, ApJ, 857, 23C](https://ui.adsabs.harvard.edu/abs/2018ApJ...857...23C/abstract)
 - [Chael, A., Bouman, K., Johnson, M. et al., Zenodo (eht-imaging version 1.1.0)](https://zenodo.org/record/2614016)
 - [eht-imaging: https://github.com/achael/eht-imaging](https://github.com/achael/eht-imaging)
+
+# 
