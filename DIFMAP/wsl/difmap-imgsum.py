@@ -99,10 +99,14 @@ obs = eh.obsdata.Obsdata(obs.ra, obs.dec, obs.rf, obs.bw, obs.data, obs.tarr,
 
 # Add a large gaussian component to account for the missing flux
 # so the final image can be compared with the original data
+
+#im_obj = eh.image.load_fits(args.infile)
+
 im_obj = im_obj.add_zblterm(obs, uv_zblcut, debias=True)
 obs_sc_addcmp = eh.selfcal(obs, im_obj, method='both', ttype=ttype)
 
 # Save an image summary sheet
 matplotlib.pyplot.close('all')
-outimgsum = '101_lo_imgsum_addcmp.pdf'
+#outimgsum = '101_lo_imgsum_unchanged.pdf'
+outimgsum = 'difmap-imgsum/'+args.infile[:-4]+'pdf'
 eh.imgsum(im_obj, obs_sc_addcmp, obs, outimgsum, cp_uv_min=uv_zblcut)
