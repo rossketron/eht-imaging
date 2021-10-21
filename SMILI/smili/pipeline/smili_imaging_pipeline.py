@@ -97,6 +97,8 @@ import argparse
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('-i','--input',metavar='input uvfits file',type=str,required=True,
                     help='input uvfits file name ')
+parser.add_argument('-i2', '--input2', metavar='second input uvfits file', type=str, required=False,
+                   help='second input uvfits file name ')
 parser.add_argument('-o','--output',metavar='output fits file',type=str,default=None,
                     help='output fits file name')
 parser.add_argument('--day',metavar='observing day of April 2017',type=int,required=True,
@@ -120,6 +122,7 @@ args = parser.parse_args()
 
 # Input uvfits file
 inputuvfits = args.input
+inputuvfits2 = args.input2
 
 # Output directory
 outputfits = args.output
@@ -232,7 +235,24 @@ imprm_init["tfd_tgterror"] = 1e-2       # Target fractional accuracy
 #   two other pipelines, this pipeline also uses eht-imaging library.
 #-------------------------------------------------------------------------------
 # Load the uvfits file
-obs = eh.obsdata.load_uvfits(inputuvfits).switch_polrep('stokes')
+## obs = eh.obsdata.load_uvfits(inputuvfits).switch_polrep('stokes')
+
+# Load the uvfits file
+if inputuvfits2 == "":
+    obs = eh.obsdata.load_uvfits(inputuvfits).switch_polrep('stokes')
+    obs.add_scans()
+    obs.avg_coherent(0., scan_avg=True)
+else:
+    # Load both uvfits files and combine
+    obs1 = eh.obsdata.load_uvfits(inputuvfits).switch_polrep('stokes')
+    obs2 = eh.obsdata.load_uvfits(inputuvfits2).switch_polrep('stokes')
+    obs1.add_scans()
+    obs1.avg_coherent(0., scan_avg=True)
+    obs2.add_scans()
+    obs2.avg_coherent(0., scan_avg=True)
+    obs2.data['time'] += 0.00001
+    obs = obs1.copy()
+    obs.data = np.concatenate([obs1.data, obs2.data])
 
 # Rescale short baselines to excite contributions from extended flux.
 #   Total flux density adopted in the Network Calibration
@@ -250,8 +270,8 @@ for j in range(len(obs.data)):
             obs.data[j][k] *= totalflux/netcal_tfd
 
 # Do scan averaging
-obs.add_scans() # this seperates the data into scans, if it isn't done so already with an NX table
-obs = obs.avg_coherent(0.,scan_avg=True) # average each scan coherantly
+## obs.add_scans() # this seperates the data into scans, if it isn't done so already with an NX table
+## obs = obs.avg_coherent(0.,scan_avg=True) # average each scan coherantly
 
 # Order stations. this is to create a minimal set of closure quantities with the highest snr
 obs.reorder_tarr_snr()
