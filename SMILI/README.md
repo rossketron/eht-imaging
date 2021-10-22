@@ -16,11 +16,11 @@ The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) u
 * [EHT Github Repository and Data](https://github.com/eventhorizontelescope)
 
 ### Documentation
-* [Setting up the Environment](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-1.md)
-* [SMILI, External Libraries, and Dependencies](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-2.md)
-* [Ds9, ehtim, & ehtplot](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-3.md)
-* [Executing SMILI Pipeline](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-4.md)
-* [Post Processing](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-5.md)
+* [Setting up the Environment](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-1.md)
+* [SMILI, External Libraries, and Dependencies](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-2.md)
+* [Ds9, ehtim, & ehtplot](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-3.md)
+* [Executing SMILI Pipeline](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-4.md)
+* [Post Processing](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-5.md)
 
 
 ## Acknowledgement 
