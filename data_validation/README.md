@@ -1,7 +1,8 @@
 # Data Validation
 
-1. In order to produce the plots that validate the data, please open up the `ReproducePlots.ipynb` Jupyter Notebook. 
-2. Once opened, run all of the cells.
+1. If you haven't already, please run `bash unpack_data.sh` from the root repository directory (Src_EHT - just one level above this directory). 
+2. In order to produce the plots that validate the data, please open up the `ReproducePlots.ipynb` Jupyter Notebook. 
+3. Once opened, run all of the cells.
    - If certain plots are desired, there are instructions to indicate what sections correspond to those plots. 
    - They will create plots of the data at refined or coarse levels.
 
