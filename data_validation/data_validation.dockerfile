@@ -30,9 +30,9 @@ RUN conda env create -f data_validation/data_validation_environment.yml; exit 0 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/eht/.bashrc && \
     echo "conda activate data_validation" >> /home/eht/.bashrc
 
-RUN echo "########################################################################" && \
-    echo "#                              ALIASES                                 #" && \
-    echo "########################################################################" && \
-    echo "alias jLab='jupyter lab --ip 0.0.0.0 --no-browser'"
+RUN echo "########################################################################" >> /home/eht/.bashrc && \
+    echo "#                              ALIASES                                 #" >> /home/eht/.bashrc && \
+    echo "########################################################################" >> /home/eht/.bashrc && \
+    echo "alias jLab='jupyter lab --ip 0.0.0.0 --no-browser'" >> /home/eht/.bashrc
 
 USER eht
