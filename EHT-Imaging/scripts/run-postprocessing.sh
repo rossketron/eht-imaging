@@ -13,25 +13,25 @@
 # Traverse output dir and apply post-processing to each .fits file
 for d in 095 096 100 101; do
     python eht-imaging_postprocessing.py \
-        -i  ./pipeline-output/SR1_M87_2017_${d}.fits \
-        -o  ./pipeline-output/SR1_M87_2017_${d}_processed.pdf \
+        -i  ../../output/EHT-Imaging/SR1_M87_2017_${d}.fits \
+        -o  ../../output/EHT-Imaging/SR1_M87_2017_${d}_processed.pdf \
         --blur --afmhot10us --notitle
 done
 
 # For succesion / timeline of steps:
 # fits -> pipeline output image -> EHTIM script: none(afmhot) -> EHTIM script: blur(afmhot) -> EHTIM script: blur(afmhot_10us)
 python eht-imaging_postprocessing.py \
-    -i  ./pipeline-output/SR1_M87_2017_101.fits \
-    -o  ./pipeline-output/SR1_M87_2017_101_afmhot.pdf \
+    -i  ../../output/EHT-Imaging/SR1_M87_2017_101.fits \
+    -o  ../../output/EHT-Imaging/SR1_M87_2017_101_afmhot.pdf \
     --notitle
 
 python eht-imaging_postprocessing.py \
-    -i  ./pipeline-output/SR1_M87_2017_101.fits \
-    -o  ./pipeline-output/SR1_M87_2017_101_afmhot10us.pdf \
+    -i  ../../output/EHT-Imaging/SR1_M87_2017_101.fits \
+    -o  ../../output/EHT-Imaging/SR1_M87_2017_101_afmhot10us.pdf \
     --notitle --afmhot10us
 
 python eht-imaging_postprocessing.py \
-    -i  ./pipeline-output/SR1_M87_2017_101.fits \
-    -o  ./pipeline-output/SR1_M87_2017_101_afmhot10us_blur.pdf \
+    -i  ../../output/EHT-Imaging/SR1_M87_2017_101.fits \
+    -o  ../../output/EHT-Imaging/SR1_M87_2017_101_afmhot10us_blur.pdf \
     --blur --notitle --afmhot10us
 

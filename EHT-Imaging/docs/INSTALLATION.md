@@ -43,7 +43,7 @@ Follow the installation procedures for installing Anaconda after running the Ana
 ### __Create Conda Environment__
 Use the provided `EHT-Imaging_environment.yml` file to create the conda environment. This will install all of the needed pipeline dependencies automatically.
 ```
-conda env create --file eht-imaging_environment.yml
+conda env create --file config/eht-imaging_environment.yml
 conda activate eht-imaging
 ```
 
@@ -214,5 +214,5 @@ Before running the pipeline, you can edit the `run-pipeline.sh` script to specif
 
 You can run the pipeline with the following command:
 ```
-bash run-pipeline.sh
+bash scripts/run-pipeline.sh
 ```
