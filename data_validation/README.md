@@ -5,7 +5,7 @@
 
 2. Please run the following command: `docker run -it -p 8888:8888 validate_data`. This runs the container and forwards everything from port 8888 in the container to the local machine's port 8888. This will allow you to interact with the container locally.
 
-3. To easily view all files and run the notebooks in a GUI, please run `jupyter lab --ip 0.0.0.0 --no-browser`. This will allow you to use a Jupyter Lab GUI to easily navigate around the repository.
+3. To easily view all files and run the notebooks in a GUI, please run `jLab`. It is an alias for the command `jupyter lab --ip 0.0.0.0 --no-browser`. This will allow you to use a Jupyter Lab GUI to easily navigate around the repository.
 
 4. In your local machine’s browser, type `localhost:8888`. It should ask for a token. Please copy and paste the token given by Jupyter log that you see in the Docker container's terminal (token=…. - it will be a long chain of numbers and characters).
 
