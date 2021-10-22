@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 ENV PYTHON_VERSION anaconda3-5.3.1
 

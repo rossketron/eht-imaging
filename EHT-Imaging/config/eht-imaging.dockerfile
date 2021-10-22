@@ -22,7 +22,7 @@ RUN useradd -m eht && \
 WORKDIR /home/eht
 
 # Copy eht dirs over from local
-COPY --chown=eht Src_EHT .
+COPY --chown=eht ../../Src_EHT .
 
 # Create conda environment for EHT-Imaging
 RUN conda env create -f EHT-Imaging/eht-imaging_environment.yml; exit 0 && \

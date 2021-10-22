@@ -10,20 +10,26 @@
 #
 
 # Check if Data is available, if not, then unpack the provided tarball
-if [[ ! -d ../data_validation/data ]]; then
+if [[ ! -d ../../data_validation/data ]]; then
     echo "========= Data not yet unpacked, executing ../unpack_data.sh ================="
-    cd ../
+    cd ../../
     bash unpack_data.sh
-    cd EHT-Imaging/
+    cd EHT-Imaging/scripts
     echo "======================= Finished Unpacking Data =============================="
 fi
 
 echo "=============== Beginning EHT-Imaging Pipeline Execution ========================="
 for d in 095 096 100 101; do
     python eht-imaging_pipeline.py \
-        -i  ../data_validation/data/uvfits/SR1_M87_2017_${d}_lo_hops_netcal_StokesI.uvfits \
-        -i2 ../data_validation/data/uvfits/SR1_M87_2017_${d}_hi_hops_netcal_StokesI.uvfits \
-        -o        ./pipeline-output/SR1_M87_2017_${d}.fits \
+        -i  ../../data_validation/data/uvfits/SR1_M87_2017_${d}_lo_hops_netcal_StokesI.uvfits \
+        -i2 ../../data_validation/data/uvfits/SR1_M87_2017_${d}_hi_hops_netcal_StokesI.uvfits \
+        -o  ../../output/EHT-Imaging/SR1_M87_2017_${d}.fits \
        --savepdf \
        --imgsum
 done
+echo "=============== Finished EHT-Imaging Pipeline Execution ========================="
+echo "                                                                                 "
+echo "================== Beginning EHT-Imaging Post-processing ========================"
+bash run-postprocessing.sh
+echo "================== Finished EHT-Imaging Post-processing ========================="
+

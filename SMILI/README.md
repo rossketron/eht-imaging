@@ -8,7 +8,9 @@
 <br>
 <br>
 
-The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) used to produce the first image of a black hole in M87. This project aims to provide findings about the reproducibility process of reconstructing an image of a black hole using SMILI's software. The ```smili``` repository contains the python scripts and its outputs (tested using a virtual machine with Ubuntu 18.04). The ```post-processing``` respository contains further edits needed to better resemble the image as shown in Paper IV.
+The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) used to produce the first image of a black hole in M87. This project aims to provide findings about the reproducibility process of reconstructing an image of a black hole using SMILI's software. The ```smili``` repository contains the python scripts and its outputs (tested using a virtual machine with 64-bit Ubuntu 18.04). The ```post-processing``` respository contains further edits needed to better resemble the image as shown in Paper IV.
+
+*NOTE*: SMILI uses an older version of astropy, but the newest version of astropy is needed for some post-processing steps. Consider looking into this if running into errors in these parts.
 
 ### Relative Links
 * [SMILI Github Repository](https://github.com/astrosmili/smili)
@@ -16,11 +18,11 @@ The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) u
 * [EHT Github Repository and Data](https://github.com/eventhorizontelescope)
 
 ### Documentation
-* [Setting up the Environment](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-1.md)
-* [SMILI, External Libraries, and Dependencies](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-2.md)
-* [Ds9, ehtim, & ehtplot](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-3.md)
-* [Executing SMILI Pipeline](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-4.md)
-* [Post Processing](https://github.com/jacobleonard545/EHT-SMILI/blob/main/documentation/Part-5.md)
+* [Setting up the Environment](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-1.md)
+* [SMILI, External Libraries, and Dependencies](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-2.md)
+* [Ds9, ehtim, & ehtplot](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-3.md)
+* [Executing SMILI Pipeline](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-4.md)
+* [Post Processing](https://github.com/TauferLab/Src_EHT/blob/main/SMILI/documentation/Part-5.md)
 
 
 ## Acknowledgement 
