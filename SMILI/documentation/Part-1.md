@@ -4,6 +4,19 @@ As noted in the documentation, SMILI has been tested in Pyenv using Python 3.7 e
 This part is somewhat broad, but I was able to get it working. (Note: This method is bad practice as 
 you typically don't want to use pyenv and anaconda together).
 
+<br>
+To manually set up the environment follow the instructions below. If you wish to use the dockerfile, just run the following commands:
+<br><br/>
+
+Build:
+```
+sudo docker build --tag [NAME] -f smili.dockerfile .
+```
+Run:
+```
+sudo docker run -it [NAME]
+```
+
 ## Relative Links
 * [Pyenv Github Repository](https://github.com/pyenv/pyenv)
 
