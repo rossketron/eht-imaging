@@ -8,7 +8,7 @@
 <br>
 <br>
 
-The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) used to produce the first image of a black hole in M87. This project aims to provide findings about the reproducibility process of reconstructing an image of a black hole using SMILI's software. The ```smili``` repository contains the python scripts and its outputs (tested using a virtual machine with Ubuntu 18.04). The ```post-processing``` respository contains further edits needed to better resemble the image as shown in Paper IV.
+The SMILI pipeline is one of three pipelines (along with DIFMAP & EHT-Imaging) used to produce the first image of a black hole in M87. This project aims to provide findings about the reproducibility process of reconstructing an image of a black hole using SMILI's software. The ```smili``` repository contains the python scripts and its outputs (tested using a virtual machine with 64-bit Ubuntu 18.04). The ```post-processing``` respository contains further edits needed to better resemble the image as shown in Paper IV.
 
 ### Relative Links
 * [SMILI Github Repository](https://github.com/astrosmili/smili)
