@@ -1,23 +1,27 @@
-# eht-imaging M87 Stokes I Imaging Pipeline for EHT observations in April 2017
+# EHT-Imaging Pipeline Guide
 
-This represents the reproduction of the Event Horizon Telescope Collaboration's EHT-Imaging Pipeline, more information can be found [here](#Original).
+### Introduction
+The EHT-Imaging pipeline is one of three pipelines (along with SMILI and DIFMAP) used to produce the M87* Black Hole images released by the Event Horizon Telescope Collaboration (EHTC). This project aims to provide findings about the reproducibility process of reconstructing an image of a black hole using the EHT-Imaging workflow.
 
-A list of files, directories, and explanations of each is given below:
-* [`eht-imaging_pipeline.py`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_pipeline.py) - EHT Collab's Python script to construct images from data
-* [`eht-imaging_postprocessing.py`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_postprocessing.py) - Our Python script to produce better image reproductions closer to those released in [M87 Paper IV](https://doi.org/10.3847/2041-8213/ab0e85)
-* [`pipeline-output`](https://github.com/TauferLab/Src_EHT/tree/main/EHT-Imaging/pipeline-output) - Directory to store pipeline .fits output and post-processing image outputs
-* [`eht-imaging_pipeline.ipynb`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_pipeline.ipynb) - Our Jupyter notebook that steps through the original pipeline script to interactively produce images
-* [`notebook-output`](https://github.com/TauferLab/Src_EHT/tree/main/EHT-Imaging/notebook-output) - Directory to store notebook .fits output and images
-* [`NOTEBOOK.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/NOTEBOOK.md) - Instructions to set-up and run the provided Jupyter notebook
-* [`INSTALLATION.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/INSTALLATION.md) - Instructions to set-up environment with dependencies and run the pipeline
-* [`INSTALLATION_old.md`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/INSTALLATION_old.md) - Instructions to set-up environment (this file does not use the provided environment file)
-* [`eht-imaging_environment.yml`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/eht-imaging_environment.yml) - File to create conda environment
-* [`run-pipeline.sh`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/run-pipeline.sh) - bash script with parameters to execute the pipeline across all Observation Days' data
-* [`run-postprocessing.sh`](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/run-pipeline.sh) - bash script with parameters to execute desired post-processing effects/steps
-</br>
-</br>
+This `EHT-Imaging` repository contains the original pipline script developed by the EHTC as well as scripts that we have developed in our efforts to fully reproduce the EHTC released black hole images. We also provide detailed instructions for installing all necessary dependencies and for running the pipeline on your local machine, as well as a Jupyter Notebook detailing the pipeline's execution and image creation process.
 
-# Original
+### Summary of Contents
+* Jupyter Notebook showing detailed pipeline execution and post-processing steps that we have taken
+* Python scripts of original pipeline and our image post-processing
+* Dockerfile to create a base image. We also provide access to pull a fully-functional Docker image from our Dockerhub.
+* Documentation for environment setup to run pipeline, running the pipeline and post-processing, and using the provided Jupyter notebook.
+
+
+### Documentation
+* [Setting up the Environment](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/INSTALLATION.md)
+* [Executing EHT-Imaging Pipeline](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/PIPELINE.md)
+* [Running Jupyter Notebook](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/NOTEBOOK.md)
+* [Set Up Docker Container](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/DOCKER.md)
+
+<br>
+<br>
+
+# Information from the Event Horizon Telescope Collaboration
 **Authors:** The Event Horizon Telescope Collaboration et al.
 
 **Date:** April 10, 2019
@@ -25,18 +29,6 @@ A list of files, directories, and explanations of each is given below:
 **Primary Reference:** [The Event Horizon Telescope Collaboration, et al. 2019d, ApJL, 875, L4 (M87 Paper IV)](https://doi.org/10.3847/2041-8213/ab0e85)
 
 **Data Product Code:** [2019-D01-02](https://eventhorizontelescope.org/for-astronomers/data)
-
-**Brief Description:**
-
-The pipeline reconstructs an image from uvfits files simultaneously released in the EHT website (data release ID: 2019-D01-01) using a python-interfaced imaging package eht-imaging (Chael et al. 2016,2018).
-
-To run the pipeline, specify the input uvfits data file. Multiple bands can be specified separately. Additional flags control the output, which is only the reconstructed image as a FITS image by default.
-
-Example call:
-
-    python eht-imaging_pipeline.py -i ../../data/uvfits/SR1_M87_2017_101_lo_hops_netcal_StokesI.uvfits -i2 ../../data/uvfits/SR1_M87_2017_101_hi_hops_netcal_StokesI.uvfits --savepdf
-
-For additional details, please read the help document associated in the imaging script: "python eht-imaging_pipeline.py --help".
 
 **Additional References:**
 

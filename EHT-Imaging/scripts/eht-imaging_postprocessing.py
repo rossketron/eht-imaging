@@ -1,3 +1,12 @@
+#!/usr/bin/python
+
+# This file implements a variety of EHT Image postprocessing steps which
+# are given as command line argumets. The output filename should also be
+# passed as a command line argument.
+#
+# See the EHT-Imaging/scripts/run-postprocessing.sh file for examples
+# of running this script.
+#
 import matplotlib
 matplotlib.use('Agg')
 import os
