@@ -23,7 +23,7 @@
 #### Options for Reproducing Different Plots:
 1. High and Low Frequencies for Each Day _**(8 Plots Total)**_
 2. Combined High and Low Frequencies for Each Day _**(4 Plots Total)**_
-3. Replica of Paper IV: Figure 1's subplot _**(1 Plot Total)**_
+3. Replica of Paper IV's Figure 1 _**(3 Plots Total)**_
    - _**Recommend running this section because this validates what is in the original paper!**_
    
    
