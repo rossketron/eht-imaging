@@ -18,6 +18,11 @@ if [[ ! -d ../../data_validation/data ]]; then
     echo "======================= Finished Unpacking Data =============================="
 fi
 
+if [[ ! -d ../../output/EHT-Imaging ]]; then
+    echo "========= Creating output directory at ../../output/EHT-Imaging =============="
+    mkdir -p ../../output/EHT-Imaging
+fi
+
 echo "=============== Beginning EHT-Imaging Pipeline Execution ========================="
 for d in 095 096 100 101; do
     python eht-imaging_pipeline.py \
@@ -32,4 +37,3 @@ echo "                                                                          
 echo "================== Beginning EHT-Imaging Post-processing ========================"
 bash run-postprocessing.sh
 echo "================== Finished EHT-Imaging Post-processing ========================="
-

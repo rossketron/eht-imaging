@@ -60,6 +60,20 @@ print(response.message)
 np.array(datalist, dtype=object)
 ```
 
+### __Install the ehtplot library__
+```
+# Clone the library repo
+git clone https://github.com/liamedeiros/ehtplot.git
+cd ehtplot
+
+# Add __init__.py file containing the word "pass" to 'extra' directory
+# This resolves issue with installation not including the installation of the 'extra' module
+echo "pass" > ehtplot/extra/__init__.py
+
+# Install → this installs ehtplot into your current python's
+# site-packages directory
+python setup.py install
+```
 ### __All depencies are installed__ -- Go [here](#Running-The-Pipeline) for documentation on running the pipeline
 ---------------------------
 </br>
@@ -203,16 +217,22 @@ print(response.message)
 ```
 np.array(datalist, dtype=object)
 ```
+
+### __Install the ehtplot library__
+```
+# Clone the library repo
+git clone https://github.com/liamedeiros/ehtplot.git
+cd ehtplot
+
+# Add __init__.py file containing the word "pass" to 'extra' directory
+# This resolves issue with installation not including the installation of the 'extra' module
+echo "pass" > ehtplot/extra/__init__.py
+
+# Install → this installs ehtplot into your current python's
+# site-packages directory
+python setup.py install
+```
 ---------------------------
 </br>
 
-# Running the Pipeline
-#### __All of the dependencies are now installed and you should be able to run the pipeline__
-The pipeline can be executed with the following command. There is no need to worry about unpacking the data or where it is located because the `run-pipeline.sh` script will automatically ensure it is in the correct location.
-
-Before running the pipeline, you can edit the `run-pipeline.sh` script to specify if you want the pipeline to save the images as .pdf files. Instructions are in the comments of the file on how to do this. The output .pdf files will be saved in the `pipeline-output` directory.
-
-You can run the pipeline with the following command:
-```
-bash scripts/run-pipeline.sh
-```
+__All of the dependencies are now installed. In order to execute the pipeline and produce images, follow the instructions [here](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/PIPELINE.md). In order to run the Jupyter Notebook, follow the instructions [here](https://github.com/TauferLab/Src_EHT/blob/main/EHT-Imaging/docs/NOTEBOOK.md).__
