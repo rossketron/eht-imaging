@@ -14,7 +14,7 @@ sudo docker build --tag [NAME] -f smili.dockerfile .
 ```
 Run:
 ```
-sudo docker run -it [NAME]
+sudo docker run -it -p 8888:8888 [NAME]
 ```
 
 ## Relative Links
