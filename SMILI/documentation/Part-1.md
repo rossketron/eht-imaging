@@ -1,8 +1,7 @@
 # Setting up the Environment
 
 As noted in the documentation, SMILI has been tested in Pyenv using Python 3.7 environments provided by Anaconda. 
-This part is somewhat broad, but I was able to get it working. (Note: This method is bad practice as 
-you typically don't want to use pyenv and anaconda together).
+This part is somewhat broad, but I was able to get it working.
 
 <br>
 To manually set up the environment follow the instructions below. If you wish to use the dockerfile, just run the following commands:
