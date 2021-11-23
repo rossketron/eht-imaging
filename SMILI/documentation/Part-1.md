@@ -6,11 +6,11 @@ To manually set up the environment follow the instructions below. If you wish to
 
 Build:
 ```
-sudo docker build --tag [NAME] -f smili.dockerfile .
+docker build --tag [NAME] -f smili.dockerfile .
 ```
 Run:
 ```
-sudo docker run -it -p 8888:8888 [NAME]
+docker run -it -p 8888:8888 [NAME]
 ```
 
 ## Relative Links
