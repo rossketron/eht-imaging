@@ -2,6 +2,7 @@
 
 ### Docker Instructions
 1. Please run the following command from the external directory that contains the Src_EHT repository: `docker build --tag validate_data -f Src_EHT/data_validation/data_validation.dockerfile .` This will build the Docker container image.
+   * Docker image is now on our DockerHub [here](https://hub.docker.com/r/globalcomputinglab/reproducibility-eht/tags). Pull the `data-validation` container using the command `docker pull globalcomputinglab/reproducibility-eht:data-validation`.
 
 2. Please run the following command: `docker run -it -p 8888:8888 validate_data`. This runs the container and forwards everything from port 8888 in the container to the local machine's port 8888. This will allow you to interact with the container locally.
 
