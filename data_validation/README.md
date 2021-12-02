@@ -17,7 +17,7 @@
 
 ### Data Validation Jupyter Notebook Instructions
 1. To easily view all files and run the notebook in the Jupyter Lab GUI, please run `jLab`. It is an alias for the command `jupyter lab --ip 0.0.0.0 --no-browser`. This will allow you to use a Jupyter Lab GUI to easily navigate around the repository.
-   * If you do not have visualization capabilities, please run `python ReproducePlots.py` in the `data_validation directory`. You can ignore the rest of the steps, but please read the "Notes" section. 
+   * If you do not have visualization capabilities, please run `python ReproducePlots.py` in the `data_validation/` directory. You can ignore the rest of the steps, but please read the "Notes" section. 
 
 2. In your local machine’s browser, type `localhost:9000`. It should ask for a token. Please copy and paste the token given by Jupyter log that you see in the Docker container's terminal (token=…. - it will be a long chain of numbers and characters).
 
