@@ -25,7 +25,7 @@
 
    * If in the case that the md5sum has been changed for the data, please check that the command you used to download the data is correct and check that the data repository has not been updated. If the checksum of the container image is different, please follow the steps below: 
      * To remove the old container, first get the image id by running `docker images globalcomputinglab/reproducibility-eht:data-validation`. Then run `docker rmi <IMAGE ID>`.
-     * Please re-download this container image by doing the following command: `docker pull globalcomputinglab/reproducibility-eht:data-validation`
+     * Please re-pull this container image by doing the following command: `docker pull globalcomputinglab/reproducibility-eht:data-validation`.
 
 5. Once the data integrity has been validated and all is well, please move on to the "Data Validation Jupyter Notebook Instructions" section below!
 
