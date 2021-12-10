@@ -31,17 +31,20 @@
 
 
 ## Data Validation Jupyter Notebook Instructions
-1. Once inside the container, please run `bash unpack_data.sh` from the root directory (`/home/eht`) in the container. It will untar all of the data required for the script to run and make the necessary directories.
+1. Once inside the container, please run `bash unpack_data.sh` from the root directory (`/home/eht`) in the container. It will untar all of the data required for the script to run and create the necessary directories.
 
-1. To easily view all files and run the notebook in the Jupyter Lab GUI, please run `jLab`. It is an alias for the command `jupyter lab --ip 0.0.0.0 --no-browser`. This will allow you to use a Jupyter Lab GUI to easily navigate around the repository.
+2. Navigate to the `data_validation/` directory to run the scripts. 
 
-2. In your local machine’s browser, type `localhost:9000`. It should ask for a token. Please copy and paste the token given by Jupyter log that you see in the Docker container's terminal (token=…. - it will be a long chain of numbers and characters).
+3. To easily view all files and run the notebook in the Jupyter Lab GUI, please run `jLab`. It is an alias for the command `jupyter lab --ip 0.0.0.0 --no-browser`. This will allow you to use a Jupyter Lab GUI to easily navigate around the repository.
+   * If visualization capabilities are limited and you cannot view the Jupyter Lab GUI, please run the following command: `python ReproducePlots.py`. This will produce the same outputs as the Jupyter Notebook.
 
-3. In order to produce the plots that validate the data, please open the `ReproducePlots.ipynb` Jupyter Notebook in the Jupyter Lab GUI. 
+4. In your local machine’s browser, type `localhost:9000`. It should ask for a token. Please copy and paste the token given by Jupyter log that you see in the Docker container's terminal (token=…. - it will be a long chain of numbers and characters).
 
-4. Once opened, run all of the cells.
+5. Please open the `ReproducePlots.ipynb` Jupyter Notebook in the Jupyter Lab GUI to run the data validation. 
+
+6. Once opened, run all of the cells.
    - If certain plots are desired, there are instructions to indicate what sections correspond to those plots. 
-   - They will create plots of the data at refined or coarse levels.
+   - They will create plots of the data at refined or coarse levels. Please see the "Options for Reproducing Different Plots" section below to view your options.
 
 #### Options for Reproducing Different Plots:
 1. High and Low Frequencies for Each Day _**(8 Plots Total)**_
